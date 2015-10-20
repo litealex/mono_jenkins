@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Owin.Hosting;
 
 namespace RestServer
 {
@@ -6,7 +7,12 @@ namespace RestServer
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			string baseAddress = "http://localhost:5000";
+
+			using (WebApp.Start<Startup> (baseAddress)) {
+				Console.WriteLine ("Start server");
+				Console.ReadLine ();
+			}
 		}
 	}
 }
